@@ -1,0 +1,1314 @@
+:root {
+    /*Кольори для фону секцій*/
+    --primary-section-fon: #2F303A;
+    --secondary-section-fon: #F5F4FA;
+    --social-fon: rgba(255, 255, 255, 0.1);
+    --overlay-fon: rgba(33, 150, 243, 0.9);
+
+    /*Кольори для контенту*/
+    --content-color: #FFFFFF;
+
+    /*Кольори рамок*/
+    --border-header-color: #ECECEC;
+    --border-content-color: #EEEEEE;
+    --border-subscription-email: rgba(255, 255, 255, 0.3);
+    --modal-form: rgba(33, 33, 33, 0.2);
+
+    /*Кольори тексту*/
+    --logo-color: #000000;
+    --primary-text-color: #212121;
+    --secondary-text-color: #757575;
+    --footer-text-color: rgba(255, 255, 255, 0.6);
+    --icon-social: #afb1b8;
+    --modal-placeholder: rgba(117, 117, 117, 0.5);
+
+    /*Кольори блоків, ефектів ховера і фокусу*/
+    --general-color: #2196F3;
+    --focus-color: #188ce8;
+    --gradient-color-1: #104970;
+    --gradient-color-2: #a9a9ad;
+
+    /*Кольори тіней та затемнень*/
+    --shadow-button: rgba(0, 0, 0, 0.25);
+    --main-shadow-button: rgba(0, 0, 0, 0.15);
+    --box-shadow-1: rgba(0, 0, 0, 0.12);
+    --box-shadow-2: rgba(0, 0, 0, 0.14);
+    --box-shadow-3: rgba(0, 0, 0, 0.2);
+    --box-shadow-4: rgba(0, 0, 0, 0.1);
+    --box-shadow-5: rgba(0, 0, 0, 0.8);
+    --box-shadow-6: rgba(0, 0, 0, 0.06);
+    --box-shadow-7: rgba(0, 0, 0, 0.16);
+    --box-shadow-8: rgba(47, 48, 58, 0.4);
+    --box-shadow-9: rgba(47, 48, 58, 0.8);
+}
+
+/*Обнулення стилів браузера*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+address {
+    font-style: normal;
+}
+
+/*Фон сторінки та головний шрифт*/
+.body-general {
+    background-color: var(--content-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.02em;
+    color: var(--primary-text-color);
+}
+/*Контейнер контенту - ширина 1200px*/
+.container-content {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/*Хедер*/
+.header-content {
+    /*height: 80px;*/
+    background-color: var(--content-color);
+    border-bottom: 1px solid var(--border-header-color);
+}
+
+/*Обгортка для хедеру та блок навігації*/
+.header-navigation {
+    display: flex;
+    align-items: center;
+}
+
+/*Логотип*/
+.header-logo {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    color: var(--logo-color);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-prefix {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--general-color);
+}
+
+.header-logo:focus {
+    /*outline: none;*/
+    transform: scale(1.1);
+}
+
+.header-logo:hover {
+    transform: scale(1.2);
+}
+
+/*Навігація*/
+.navigation-list {
+    display: flex;
+    margin-left: 93px;
+}
+
+.navigation-item + .navigation-item {
+    margin-left: 50px;
+}
+
+.navigation-item {
+    position: relative;
+}
+
+.navigation-item::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    height: 4px;
+    width: 0;
+    background-color: var(--general-color);
+    border-radius: 2px;
+    /* transition-property: width background-color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1); */
+
+    animation-name: animation-underline-none;
+    animation-duration: 250ms;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes animation-underline {
+    0% {
+        left: 0;
+        width: 0;
+        background-color: var(--focus-color);
+    }
+
+    100% {
+        left: 0;
+        width: 100%;
+        background-color: var(--focus-color);
+    }
+}
+
+@keyframes animation-underline-none {
+    0% {
+        right: 0;
+        width: 100%;
+        background-color: var(--focus-color);
+    }
+
+    100% {
+        right: 0;
+        width: 0;
+        background-color: var(--focus-color);
+    }
+}
+
+.navigation-item:focus::before {
+    /* left: 0;
+    width: 100%;
+    background-color: var(--focus-color); */
+
+    animation-name: animation-underline;
+    animation-duration: 250ms;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-item:hover::before {
+    /* left: 0;
+    width: 100%;
+    background-color: var(--general-color); */
+
+    animation-name: animation-underline;
+    animation-duration: 250ms;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-link {
+    display: block;
+    position: relative;
+    color: var(--primary-text-color);
+    padding: 32px 0 31px;
+    transition-property: color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*Декоративний елемент*/
+/* .navigation-link::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    height: 4px;
+    width: 0;
+    background-color: var(--general-color);
+    border-radius: 2px; */
+    /* transition-property: width background-color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1); */
+
+    /* animation-name: animation-underline-none;
+    animation-duration: 250ms;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+.current {
+    color: var(--general-color);
+    transition-property: color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*Декоративний елемент*/
+.current::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 4px;
+    width: 100%;
+    background-color: var(--general-color);
+    border-radius: 2px;
+    transition-property: background-color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-link:focus,
+.current:focus {
+    color: var(--focus-color);
+}
+
+.navigation-link:hover,
+.current:hover {
+    color: var(--general-color);
+}
+
+/* @keyframes animation-underline {
+    0% {
+        left: 0;
+        width: 0;
+        background-color: var(--focus-color);
+    }
+
+    100% {
+        left: 0;
+        width: 100%;
+        background-color: var(--focus-color);
+    }
+}
+
+@keyframes animation-underline-none {
+    0% {
+        right: 0;
+        width: 100%;
+        background-color: var(--focus-color);
+    }
+
+    100% {
+        right: 0;
+        width: 0;
+        background-color: var(--focus-color);
+    }
+} */
+
+/* .navigation-link:focus::before { */
+    /* left: 0;
+    width: 100%;
+    background-color: var(--focus-color); */
+
+    /* animation-name: animation-underline;
+    animation-duration: 250ms;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+/* .navigation-link:hover::before { */
+    /* left: 0;
+    width: 100%;
+    background-color: var(--general-color); */
+
+    /* animation-name: animation-underline;
+    animation-duration: 250ms;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+.current:focus::after {
+    background-color: var(--focus-color);
+}
+
+.current:hover::after {
+    background-color: var(--general-color);
+}
+
+/*Контакти*/
+.header-contacts {
+    display: flex;
+    margin-left: auto;
+}
+
+.contact-item + .contact-item {
+    margin-left: 30px;
+}
+
+.email-link,
+.telephone-link {
+    display: flex;
+    position: relative;
+    padding: 32px 0 31px;
+    align-items: center;
+    color: var(--secondary-text-color);
+    transition-property: color fill;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*Декоративний елемент*/
+/* .email-link::before,
+.telephone-link::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    height: 4px;
+    width: 0;
+    background-color: var(--general-color);
+    border-radius: 2px;
+    transition-property: width;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.email-link:focus::before,
+.telephone-link:focus::before {
+    left: 0;
+    width: 100%;
+    background-color: var(--focus-color);
+}
+
+.email-link:hover::before,
+.telephone-link:hover::before {
+    left: 0;
+    width: 100%;
+    background-color: var(--general-color);
+} */
+
+.contact-image {
+    display: inline-block;
+    margin-right: 10px;
+    fill: currentColor;
+}
+
+.email-link:focus,
+.telephone-link:focus {
+    color: var(--focus-color);
+    fill: currentColor;
+}
+
+.email-link:hover,
+.telephone-link:hover {
+    color: var(--general-color);
+    fill: currentColor;
+}
+
+/*Контент*/
+.main-content {
+    background-color: inherit;
+    flex: 1 0 auto;
+    /*Ця опція необхідна для того, щоб футер завжди був притиснутий до низу viewport при відсутності контенту*/
+    /* Розширений запис властивості flex:*/
+    /* flex-grow: 1; Коефіцієнт розтягування - коефіцієнт збільшення ширини flex-елементу відносно інших flex-елементів.*/
+    /* flex-shrink: 0; Коефіцієнт звуження - коефіцієнт зменшення ширини flex-елементу щодо інших flex-елементів.*/
+    /* flex-basis: auto; Базова ширина flex-елемента. */
+}
+
+.section {
+    padding: 94px 0;
+}
+
+/*Замовлення*/
+.section-order {
+    /*height: 600px;*/
+    padding: 200px 0;
+    text-align: center;
+    background-color: var(--primary-section-fon);
+    background-image:
+        linear-gradient(to right,
+            var(--box-shadow-8),
+            var(--box-shadow-8)),
+        url("../images/photo.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.order-title {
+    margin: 0 auto 30px;
+    max-width: 600px;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 1.36;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--content-color);
+}
+
+.button {
+    background: var(--general-color);
+    padding: 10px 32px;
+    border: 0;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.88;
+    letter-spacing: 0.06em;
+    color: var(--content-color);
+    /* box-shadow:
+        0 4px 4px var(--shadow-button); */
+    user-select: none;
+    cursor: pointer;
+    transition-property: background-image box-shadow text-shadow;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:focus,
+.button:hover, 
+.button:active {
+    background: var(--focus-color);
+    box-shadow:
+        0 4px 4px var(--main-shadow-button);
+}
+
+/* .button:hover {
+    background-image:
+        linear-gradient(var(--general-color),
+            var(--gradient-color-1));
+}
+
+.button:active {
+    background-image:
+        linear-gradient(var(--general-color),
+            var(--gradient-color-1));
+    box-shadow:
+        inset 4px 4px 8px var(--main-shadow-button),
+        inset -4px 4px 4px var(--main-shadow-button),
+        inset 4px -4px 4px var(--main-shadow-button),
+        inset -4px -4px 4px var(--main-shadow-button);
+    text-shadow:
+        4px 4px 4px var(--main-shadow-button),
+        -4px 4px 4px var(--main-shadow-button),
+        4px -4px 4px var(--main-shadow-button),
+        -4px -4px 4px var(--main-shadow-button);
+} */
+
+/*Про нас*/
+
+/*Заголовок для секції*/
+.hidden-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/*Наші цілі*/
+.box-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+}
+
+.about-item {
+    max-width: 270px;
+    margin: 15px;
+}
+
+.about-box {
+    /*height: 120px;*/
+    background-color: var(--secondary-section-fon);
+    border-radius: 4px;
+    padding: 25px 0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.about-image {
+    display: inline;
+}
+
+.about-title {
+    margin-bottom: 10px;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.about-text {
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: 0.03em;
+    color: var(--secondary-text-color);
+}
+
+/*Чим ми займаємося*/
+.section-our-work {
+    padding-top: 0;
+    padding-bottom: 94px;
+}
+
+/*Заголовок для секції*/
+.work-title {
+    margin-bottom: 50px;
+    font-size: 36px;
+    line-height: 1.16;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+
+/*Наше покликання*/
+.work-item {
+    position: relative;
+    max-width: 370px;
+    margin: 15px;
+}
+
+.box-image {
+    display: block;
+    width: 100%;
+}
+
+.work-category {
+    position: absolute;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    padding: 27px 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    color: var(--content-color);
+    background-color: var(--box-shadow-9);
+}
+
+/*Наша команда*/
+.section-team {
+    background-color: var(--secondary-section-fon);
+}
+
+/*Кадровий апарат*/
+.team-item {
+    max-width: 270px;
+    margin: 15px;
+    background-color: var(--content-color);
+    box-shadow:
+        0 1px 3px var(--box-shadow-1),
+        0 1px 1px var(--box-shadow-2),
+        0 2px 1px var(--box-shadow-3);
+    border-radius: 0 0 4px 4px;
+}
+
+.team-name {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.03em;
+    color: var(--primary-text-color);
+}
+
+.name-job {
+    padding-top: 0;
+    padding-bottom: 16px;
+    font-weight: 400;
+    color: var(--secondary-text-color);
+}
+
+/*Соціальці мережі*/
+.social-list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.social-item {
+    display: flex;
+    width: 44px;
+    height: 44px;
+}
+
+.social-item + .social-item {
+    margin-left: 10px;
+}
+
+.social-link {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    color: var(--icon-social);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-property: color background-color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover,
+.social-link:focus {
+    background-color: var(--focus-color);
+    color: var(--content-color);
+}
+
+.social-link:hover {
+    background-color: var(--general-color);
+}
+
+.social-box {
+    display: block;
+    fill: currentColor;
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-box:hover,
+.social-box:focus {
+    fill: currentColor;
+}
+
+/*Клієнти*/
+
+/*Клієнтура*/
+
+.client-item {
+    display: block;
+    width: 170px;
+    height: 92px;
+    margin: 15px;
+}
+
+.client-link {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--icon-social);
+    border-radius: 4px;
+    color: var(--icon-social);
+    justify-content: center;
+    align-items: center;
+    transition-property: color;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.client-link:focus {
+    outline: transparent;
+    border: 1px solid var(--focus-color);
+    color: var(--focus-color);
+}
+
+.client-link:hover {
+    border: 1px solid var(--general-color);
+    color: var(--general-color);
+}
+
+.client-logo {
+    display: block;
+    fill: currentColor;
+}
+
+.client-logo:hover,
+.client-logo:focus {
+    fill: currentColor;
+}
+
+/*Секція постерів*/
+
+/*Фільтр*/
+.filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.filter-item:not(:last-child) {
+    margin-right: 8px;
+}
+
+.filter-button {
+    background: var(--secondary-section-fon);
+    /* background-image:
+        linear-gradient(var(--secondary-section-fon),
+            var(--gradient-color-2)); */
+    padding: 6px 22px;
+    font-weight: inherit;
+    line-height: 1.62;
+    letter-spacing: 0.03em;
+    color: var(--primary-text-color);
+    box-shadow: none;
+    transition-property: background-image color box-shadow text-shadow;
+}
+
+.cheсked {
+    background: var(--focus-color);
+    color: var(--content-color);
+}
+
+.filter-button:focus,
+.filter-button:hover {
+    color: var(--content-color);
+    /* box-shadow:
+        0px 3px 1px var(--box-shadow-4),
+        0px 1px 2px var(--box-shadow-5),
+        0px 2px 2px var(--box-shadow-1); */
+}
+
+.filter-button:active {
+    box-shadow:
+        0px 3px 1px var(--box-shadow-4),
+        0px 1px 2px var(--box-shadow-5),
+        0px 2px 2px var(--box-shadow-1);
+    /* box-shadow:
+        0 4px 4px var(--main-shadow-button),
+        inset 4px 4px 4px var(--main-shadow-button),
+        inset -4px 4px 4px var(--main-shadow-button),
+        inset 4px -4px 4px var(--main-shadow-button),
+        inset -4px -4px 4px var(--main-shadow-button); */
+    color: var(--content-color);
+}
+
+/*Постери*/
+.poster-item {
+    /*max-width: 370px;*/
+    width: calc((100% - 90px) / 3);
+    margin: 15px;
+    background-color: var(--content-color);
+    border-bottom:
+        1px solid var(--border-content-color);
+    cursor: pointer;
+    transition-property: box-shadow;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.poster-item:hover {
+    box-shadow:
+        0 1px 1px var(--box-shadow-1),
+        0 4px 4px var(--box-shadow-6),
+        1px 4px 6px var(--box-shadow-7);
+}
+
+.poster-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.poster-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 63px 24px;
+    background-color: var(--overlay-fon);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--content-color);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%);
+}
+
+.poster-item:hover .poster-title {
+    transform: translateY(0);
+}
+
+.poster-text {
+    border-left: 1px solid var(--border-content-color);
+    border-right: 1px solid var(--border-content-color);
+    padding: 20px 23px 19px;
+}
+
+.poster-name {
+    margin: 0 0 4px;
+    font-size: 18px;
+    line-height: 2;
+    letter-spacing: 0.06em;
+    color: var(--primary-text-color);
+}
+
+.poster-category {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.87;
+    letter-spacing: 0.03em;
+    color: var(--secondary-text-color);
+}
+
+/*Футер*/
+.footer-content {
+    /*height: 252px;*/
+    background-color: var(--primary-section-fon);
+    padding: 60px 0;
+}
+
+/*Обгортка для футера*/
+.footer-box {
+    display: flex;
+    align-items: baseline;
+}
+
+/*Блок для логотипу та адреси футера*/
+.footer-contact,
+.footer-address {
+    display: block;
+}
+
+/*Логотип футера*/
+.footer-logo {
+    color: var(--content-color);
+}
+
+.footer-logo + .footer-address {
+    margin-top: 20px;
+}
+
+/*Адреса футера*/
+.address-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-item+.address-item {
+    margin-top: 9px;
+}
+
+.address-link,
+.footer-email,
+.footer-telephone {
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: 0.03em;
+    color: var(--content-color);
+    transition-property: color;
+    transition-duration: 250ms;
+    transition-timing-function:
+            cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-email,
+.footer-telephone {
+    display: inline;
+    padding: 0;
+    color: var(--footer-text-color);
+}
+
+.address-link:focus,
+.footer-email:focus,
+.footer-telephone:focus {
+    color: var(--focus-color);
+}
+
+.address-link:hover,
+.footer-email:hover,
+.footer-telephone:hover {
+    color: var(--general-color);
+}
+
+/*Приєднуйтесь*/
+.join-box {
+    margin-left: 70px;
+}
+
+.join-title {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    color: var(--content-color);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/*Приєднуйтесь - Соціальці мережі*/
+.join {
+    background-color: var(--social-fon);
+    color: var(--content-color);
+}
+
+/*Підписуйтесь на розсилку*/
+.subscription-box {
+    margin-left: auto;
+}
+
+/*Форма на розсилку*/
+.subscription-form {
+    /*width: 570px;*/
+    display: flex;
+}
+
+.subscription-email + .subscription-button {
+    margin-left: 12px;
+}
+
+.subscription-email {
+    outline: transparent;
+    width: 358px;
+    height: 50px;
+    padding: 15px 16px;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    color: var(--content-color);
+    background-color: transparent;
+    border: 1px solid var(--border-subscription-email);
+    border-radius: 4px;
+    box-shadow: 0px 4px 4px var(--main-shadow-button);
+    text-shadow: 0px 4px 4px var(--main-shadow-button);
+    transition-property: color border;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscription-email::placeholder {
+    color: var(--footer-text-color);
+}
+
+.subscription-email:focus {
+    border: 1px solid var(--general-color);
+    border-radius: 4px;
+    caret-color: var(--general-color);
+    color: var(--general-color);
+}
+
+.subscription-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    padding: 10px 28px 10px 29px;
+    /*box-shadow: 0px 4px 4px var(--main-shadow-button);*/
+}
+
+.subscription-image {
+    display: inline-block;
+    fill: currentColor;
+}
+
+/*Бекдроп*/
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--box-shadow-3);
+    opacity: 1;
+    transition-property: opacity, visibility;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*Модальне вікно*/
+.modal-box {
+    position: absolute;
+    width: 528px;
+    /*height: 581px;*/
+    padding: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background-color: var(--content-color);
+    box-shadow:
+        0px 1px 3px var(--box-shadow-1),
+        0px 1px 1px var(--box-shadow-2),
+        0px 2px 1px var(--box-shadow-3);
+    border-radius: 4px;
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden .modal-box {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+/*Контент модального вікна*/
+.button-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background: var(--content-color);
+    border: 1px solid var(--box-shadow-4);
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--logo-color);
+}
+
+.button-close-image {
+    display: block;
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-close:focus .button-close-image,
+.button-close:hover .button-close-image {
+    fill: var(--general-color);
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+    color: var(--primary-text-color);
+    margin-bottom: 12px;
+}
+
+/*Форма модального вікна*/
+.modal-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-label {
+    display: block;
+    width: 100%;
+    margin-bottom: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.01em;
+    color: var(--secondary-text-color);
+}
+
+.modal-input {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.modal-name,
+.modal-phone,
+.modal-email,
+.modal-comment {
+    width: 100%;
+    height: 40px;
+    padding: 12px 16px 12px 42px;
+    border: 1px solid var(--modal-form);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+    color: var(--primary-text-color);
+    transition-property: color, border;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-input-image {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    fill: currentColor;
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-comment {
+    width: 100%;
+    height: 120px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    resize: none;
+}
+
+.modal-comment::placeholder {
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+    color: var(--modal-placeholder);
+}
+
+.modal-name:focus,
+.modal-phone:focus,
+.modal-email:focus,
+.modal-comment:focus {
+    outline: transparent;
+    border: 1px solid var(--general-color);
+    border-radius: 4px;
+    caret-color: var(--general-color);
+    color: var(--general-color);
+}
+
+.modal-name:focus + .modal-input-image,
+.modal-phone:focus + .modal-input-image,
+.modal-email:focus + .modal-input-image {
+    fill: var(--general-color);
+}
+
+.modal-label-conditions {
+    position: relative;
+    margin: 0 auto 30px;
+    padding-left: 23px;
+    padding-top: 2px;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal-conditions {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.conditions-box {
+    position: absolute;
+    width: 16px;
+    height: 15px;
+    border: 2px solid var(--primary-text-color);
+    border-radius: 3px;
+    left: 8px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition-property: background-color, border;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-conditions-image {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    fill: transparent;
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-timing-function:
+        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-conditions:focus +
+.conditions-box {
+    border: 2px solid var(--general-color);
+}
+
+.modal-conditions:checked:focus +
+.conditions-box {
+    border: 2px solid var(--focus-color);
+    background-color: var(--focus-color);
+}
+
+.modal-conditions:checked +
+.conditions-box {
+    border: 2px solid var(--general-color);
+    background-color: var(--general-color);
+}
+
+.modal-conditions:checked ~
+.modal-conditions-image {
+    fill: var(--content-color);
+}
+
+.modal-conditions-title {
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: 0.03em;
+}
+
+.modal-conditions-link {
+    position: relative;
+    color: var(--general-color);
+}
+
+.modal-conditions-link:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0.11em;
+    width: 100%;
+    height: 1px;
+    background-color: var(--general-color);
+}
+
+.modal-button {
+    margin: 0 auto;
+    padding: 10px 55px;
+    /*box-shadow: 0px 4px 4px var(--main-shadow-button);*/
+}
